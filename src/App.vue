@@ -1,19 +1,21 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+     <!-- <transition
+        enter-active-class="animated fideIn"
+        leave-active-class="animated fideOut"
+      > -->
+    <router-view></router-view>
+     <!-- </transition> -->
   </div>
 </template>
 
-<style lang="stylus">
-#app
-  font-family 'Avenir', Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-  margin-top 60px
+<script>
+import 'animate.css'
+export default {
+
+}
+</script>
+
+<style>
+
 </style>
