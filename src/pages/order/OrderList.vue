@@ -2,10 +2,12 @@
   <div class="show-list">
     <div class="order-list-wrapper">
       <div class="order-header-title">
-        <span class="title-border-active">演出订单</span>
-        <span>商品订单</span>
+        <router-link tag="span" active-class="title-border-active" to="/order/orderlist/ticketlist">演出订单</router-link>
+        <router-link tag="span" active-class="title-border-active" to="/order/orderlist/malllist">商品订单</router-link>
       </div>
-      <div infinite-scroll-disabled="busy" infinite-scroll-distance="10"></div>
+      <div infinite-scroll-disabled="busy" infinite-scroll-distance="10">
+        <router-view></router-view>
+      </div>
     </div>
   </div>
 </template>
@@ -31,6 +33,7 @@ export default {};
                     border-bottom: 4px solid #ff5e00;
                 }
             }
+            
         }
     }
 </style>

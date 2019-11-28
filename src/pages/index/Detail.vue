@@ -1,6 +1,6 @@
 <template>
   <div class="content-wrap">
-    <div class="content" v-if="isLoaded.length>0">
+    <div class="content"  v-if="isLoaded.length>0">
       <div class="ticket-detail-content">
         <div class="header-content">
           <div class="ticket-detail-top">
@@ -55,16 +55,17 @@
             <transition name="bounce">
             <div
               class="detail-description-text"
-              :style="clickSeeAll? 'transition: height 0.4s ease 0s;height: 2534px;':'transition: height 0.4s ease 0s;height: 400px;'"
-                
+              
+              ref="detail"
             >
+            <!-- :style="clickSeeAll? 'transition: height 0.4s ease 0s;':'transition: height 0.4s ease 0s;'" -->
             <!-- <div class="detail-rich-text"><p>2019年，「莫宰羊来啦」巡演即将开启，莫宰羊真的来啦！</p><p><br></p><p>11月16日 星期六 深圳 红糖罐（蛇口店）&nbsp;</p><p>11月17日 星期日 上海 Modernsky LAB&nbsp;</p><p>11月23日 星期六 长沙 46LIVEHOUSE&nbsp;</p><p>11月24日 星期日 武汉 L7 LIVEHOUSE&nbsp;</p><p>12月1日   星期日 广州 TU凸空间&nbsp;</p><p>12月6日   星期五 重庆 坚果LIVEHOUSE&nbsp;</p><p>12月7日   星期六 成都 CH8冇独空间（完美店）&nbsp;</p><p>12月8日   星期日 西安 未来星球1935LIVEHOUSE&nbsp;</p><p>12月13日 星期五 北京 乐空间</p><p><br></p><p>莫宰羊【读音：m̄tsai-iánn】</p><p>释义1：不清楚，不晓得</p><p>释义2：来自台湾花莲，一首《未接来电》引爆台网的「怪物新人」歌手/Rapper</p><p>释义3：一间真实存在的羊肉馆</p><p><br></p><p>今次！在台湾堪称现象级的「怪物新人」莫宰羊，动用难以言喻的超能力，从「已经大红大紫」的未来穿越回到「此刻」，打电话叫你去看他的首轮内地巡演！不要让你和未来天王莫宰羊的live初体验，变成你人生中的「未接来电」！</p><p><br></p><p><img src="http://img.zhengzai.tv/partner/2019/09/25/5d8b8e7ce82e0.jpeg"></p><p><br></p><p>号称是「怪物新人」，也的确是像少年漫画角色的20岁少年莫宰羊，可是一首歌就拥有600万播放量的「顶流」狠角色。虽然他来自台湾的「后山」花莲市，却冲在了本土原创音乐的最前线：莫宰羊熟练把玩着时下最新颖的音色和腔调，探讨都市年轻人最头大的问题；言辞间流露的南方海岸的质朴和温柔，调和孩子气的古怪譬喻，让他成为名副其实的可爱「怪物」；而超级流畅、明朗的旋律，更有让人重回00年代华语R&amp;B盛世的兴奋感！</p><p><br></p><p><img src="http://img.zhengzai.tv/partner/2019/09/25/5d8b4597e5e82.jpg"></p><p><br></p><p>尽管很多时候，莫宰羊都被冠以rapper的身份，但他的音乐却是难以用说唱来定义的奇妙综合体。我们也可以在现今所有的音乐icon身上，发现同样的特质：难以界定的风格，凸显个人特质的细节，和完全自发的率真。</p><p><br></p><p>浓重的台湾口音、咿咿呀呀的「羊羊腔」和洗脑旋律，不得不教人想起周杰伦处子作中闪现的灵光；不设界限的编曲风格，则来自于Frank Ocean、Kanye</p><p>West这些跨界天才的启发，他更坦言在尝试将techno、house风格加入到新作中去；至于怎么写出《鱼》《水》那样细腻、不谈金钱与权色、专注于内心世界的“另类”歌词，只要知道他是个民谣爱好者，就也说得通了。虽然年纪轻轻，但莫宰羊已经学会将创作上复杂的影响内化，取得了在「熟悉」和「新颖」之间的微妙平衡，打上了自己的专属音乐标签。</p><p><br></p><p><img src="http://img.zhengzai.tv/partner/2019/09/25/5d8b48c3d8bff.jpg"></p><p><br></p><p><br></p><p>莫宰羊的每一首歌，都像是一种人生的标本切片，看似浅薄，却能触及本质。&nbsp;「最近还好吗脸色变超差馁」，在他的新歌《健康快乐》里面，不出三句，就出现了这样直戳「痛点」的直率提问——要怎么回答这样的问题，又怎么解决这样的情境呢？完全不同于那些贩卖焦虑的丧文化商人，当你听过他「根本感受不到任何快乐呀」的困惑，和「答应我做梦完回道路上」的感叹，总能被他真挚朴实的给小小地感动，就像被邀请到了没有烦恼的秘密海滩，单纯地看着海面，不会被打扰——「如果能当一只鱼，就不用脱裤裤尿尿」。</p><p><br></p><p><br></p><p>这个被海水养育得很温柔的小孩，从很小的时候，就带着“绝对不要和其他人一样”的心情在生活着；在社会上迷茫的人们像是蚂蚁一样“寻找自己”的时候，莫宰羊已经用无数次不为人知的尝试，找到了属于自己的方向，哪怕是被认为是怪物，也要像「水花」和「游鱼」一样，自由快乐啊！</p><p><br></p><p>总之，莫宰羊来啦！</p></div> -->
             <div class="detail-rich-text" v-html="allInfo.detail">
                 {{allInfo.detail}}
             </div>
             </div>
              </transition>
-            <div @click="SeeAll">
+            <div @click="SeeAll" v-show="moreBtn">
               <div class="detail-description-more">
                 查看全部
                 <span class="description-more-icon yo-ico">&#xe609;</span>
@@ -125,14 +126,18 @@ import { get } from 'utils/http'
 export default {
     data(){
         return {
+          // transition: height 0.4s ease 0s;
             clickSeeAll:false,
             allInfo:{},
-            isLoaded:[]
+            isLoaded:[],
+            moreBtn:true,
+            height:0,
+            isAll:"查看全部"
         }
     },
     async mounted(){
         let id = this.$route.params.id
-        console.log(this.$route.params)
+        // console.log(this.$route.params)
         let result = await get({
             url:'/api/user/performance/detailNew',
             params:{
@@ -140,10 +145,13 @@ export default {
                 amid: 0
             }
         })
-        
+        // v-if="isLoaded.length>0"
         this.allInfo = result.data
         this.isLoaded = result.data.notice_image
-        console.log(this.allInfo)
+        // console.log(this.allInfo)
+        setTimeout(()=>{
+          this.getHeight()
+        },300)
     },
     methods:{
         SeeAll(){
@@ -152,7 +160,28 @@ export default {
         buyTicket(){
           let id = this.$route.params.id
           this.$router.push({name:'purTicket',params:{id:id,title:this.allInfo.title,cityName:this.allInfo.city_name,fieldName:this.allInfo.field_name}})
+        },
+        async getHeight(){
+          await this.$nextTick(()=>{
+            this.height = this.$refs.detail.offsetHeight
+          })
+          if(this.$refs.detail.offsetHeight<=400){
+            this.moreBtn= false
+          }else{
+            this.$refs.detail.style.height = '400px'
+          }
         }
+    },
+    watch:{  
+      "clickSeeAll"(){
+        if(this.clickSeeAll){
+          this.$refs.detail.style.height = this.height + 'px'
+          this.isAll = "收起"
+        }else{
+          this.$refs.detail.style.height = "400px"
+          this.isAll = "查看全部"
+        }
+      }
     }
 };
 </script>
@@ -359,6 +388,7 @@ export default {
                     background: #1b1a1b;
                     padding: .20513rem;
                     .detail-description-text{
+                        transition: height 0.4s ease 0s;
                         overflow: hidden;
                         .detail-rich-text{
                             p{

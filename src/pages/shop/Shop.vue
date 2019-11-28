@@ -11,7 +11,7 @@
         <router-view></router-view>
         </transition>
        </div>
-       <div v-else>
+       <div class="main-con" v-else>
            <router-view></router-view>
        </div>
     </div>

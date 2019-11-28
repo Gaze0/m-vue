@@ -125,7 +125,9 @@ export default {
             }
           })
         }
-        this.$router.push('/address/list')
+        // this.$router.push('/address/list')
+        this.$router.back()
+
       }
     },
     watch:{

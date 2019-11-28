@@ -8,8 +8,9 @@ const state = {
 
 const mutations={
     setAddress(state,payload){
-        let { type,index } = payload
-        console.log(type,index)
+        let { type } = payload 
+        let index =store.get('index')||state.index
+        
         if(type=='change'){
             var addressList = store.get('address')||[]
             state.addressInfo = payload
@@ -17,13 +18,20 @@ const mutations={
             state.addressId++
             addressList.splice(index,1,state.addressInfo)
         }else{
-            let index = payload.index
+            console.log(index,123)
+            // if(index-1 == store.get('index')){
+            //     index = index-2
+            //     console.log(index)
+            // }
+            index = payload.index
             var addressList = store.get('address')||[]
             if(index){
+                console.log('assdf')
                 addressList.splice(index-1,1)
                 // addressList.filter((val)=>{
                 //     return 
                 // })
+                index = index-2
                 console.log(addressList)
             }else{
                 state.addressInfo = payload
@@ -32,7 +40,9 @@ const mutations={
                 addressList.push(state.addressInfo)
             }
         }
-        state.index = index
+        console.log(index)
+        store.set('index',index)
+        state.index = index+2
         store.set('address',addressList)
     }
 }

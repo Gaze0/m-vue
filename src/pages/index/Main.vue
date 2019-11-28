@@ -54,6 +54,7 @@ import Vue from "vue";
 import { Toast } from "vant";
 Vue.use(Toast);
 import "../../libs/swiper.css";
+import {mapState} from 'vuex'
 
 import { INFO_ACTIVE } from '../../store/active-type'
 export default {
@@ -66,6 +67,7 @@ export default {
   },
   
   async mounted() {
+    console.log(mapState)
     let page = 1;
     // let city =
     //请求第一页
@@ -130,8 +132,13 @@ export default {
     Banner,
     Loading
   },
-  updated(){
-    // this.$store.state.loading=false
+  computed:{
+    ...mapState({
+        aaa:"address"
+    })
+    // localComputed(){
+     
+    // }
   },
   watch:{
     '$store.state.showList':function(){

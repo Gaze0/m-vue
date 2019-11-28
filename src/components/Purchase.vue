@@ -78,7 +78,7 @@
                 </div>
             </div>
         </div>
-        <div class="purchase-pay-btn">
+        <div class="purchase-pay-btn" @click="subMoney">
             <span class="pay-btn">立即支付 ¥ {{~~(goodInfo[0].price.slice(0,-3) * sum) + ~~(priceSend.slice(0,-3))}}</span>
         </div>
     </div>
@@ -87,13 +87,17 @@
 
 <script>
 import store from 'store'
+import { mapState } from 'vuex'
+import Vue from "vue";
+import { Toast } from "vant";
+Vue.use(Toast);
 export default {
     data(){
         return {
             goodInfo:[],
             product:[],
-            sum:0,
-            name:'',
+            // sum:0,
+            // name:'',
             priceSend:'',
             wechect:true,
             alipay:false,
@@ -101,21 +105,22 @@ export default {
         }
     },
     mounted(){
-        // console.log(this.$route)
-        console.log(this.$store.state.address.index)
-        let index = this.$store.state.address.index
+        // console.log(mapState)
+        // console.log(this.$store.state.address.index)
+        let index = store.get('index')
+        // console.log(index)
         let address = store.get('address')||[]
         
         this.address = address[index]
-        console.log(this.address)
-        let {goodInfo,sum,name,priceSend} = this.$route.params
-        // console.log(goodInfo[0])
+        // console.log(this.$store.state.purchase)
+        let {goodInfo,priceSend} = this.$store.state.purchase
         this.goodInfo = goodInfo
         // console.log(goodInfo[0].product_model)
         this.product = this.goodInfo[0].product_model[0]
-        this.sum=sum,
-        this.name=name
+        // this.sum=sum,
+        // this.name=name
         this.priceSend = priceSend
+        // console.log(this.sum)
     },
     methods:{
         aliPay(){
@@ -127,8 +132,42 @@ export default {
             this.wechect = true
         },
         changeAddress(){
-            this.$router.push('/address/add')
+            this.$router.push('/address/list')
+        },
+        subMoney(){
+            let that = this
+            if(this.address){
+                 Toast.loading({
+                    message: '加载中...',
+                    forbidClick: true,
+                    loadingType: 'spinner',
+                    onClose(){
+                        that.$store.dispatch('getGoods',that.$store.state.purchase)
+                    }
+                });
+                // Toast.loading({
+                //     message: '加载中...',
+                //     forbidClick: true,
+                //     loadingType: 'spinner',
+                //     onClose(){
+                        
+                //     }
+                // });
+            }else{
+                Toast({
+                    message: "请添加地址",
+                    position: "center",
+                    duration: 3000
+                });
+              
+            }
         }
+    },
+    computed:{
+        ...mapState({
+            sum:state=>state.purchase.sum,
+            name:state=>state.purchase.name
+        })
     }
 };
 </script>

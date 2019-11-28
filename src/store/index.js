@@ -13,6 +13,8 @@ import cityInfo from './cityInfo'
 import video from './video'
 import address from './address'
 import people from './people'
+import purchase from './purchase'
+import goodsCar from './goodsCar'
 export default new Vuex.Store({
   state: {
     days: 0,
@@ -82,6 +84,8 @@ export default new Vuex.Store({
     cityInfo,
     video,
     address,
-    people
+    people,
+    purchase,
+    goodsCar
   }
 })

@@ -6,8 +6,8 @@
           v-for="banner in bannerList"
           :key="banner.id"
         >
-          <img v-if='banner.cover' :src="banner.cover" alt @click="$router.push(`/index/detail/${banner.id}`)" />
-          <img v-else :src="banner.relation_img" alt @click="$router.push(`/index/detail/${banner.id}`)" />
+          <img :style="($route.fullPath=='/index/home')?' width:100%':''" v-if='banner.cover' :src="banner.cover" alt @click="$router.push(`/index/detail/${banner.id}`)" />
+          <img :style="($route.fullPath=='/index/home')?' width:100%':''" v-else :src="banner.relation_img" alt @click="$router.push(`/index/detail/${banner.id}`)" />
         </div>
         
       </div>

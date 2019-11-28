@@ -24,6 +24,8 @@ import addpeople from '../pages/inpeople/AddPeople.vue'
 
 import Order from '../pages/order/Order.vue'
 import orderlist from '../pages/order/OrderList.vue'
+import ticketlist from '../pages/order/TicketList.vue'
+import malllist from '../pages/order/MallList.vue'
 
 import Address from '../pages/address/Address.vue'
 import List from '../pages/address/AddressMain.vue'
@@ -139,8 +141,24 @@ const routes = [
       {
         path:'orderlist',
         name:'orderlist',
-        component:orderlist
-      }
+        component:orderlist,
+        redirect:'/order/orderlist/ticketlist',
+        children:[
+          {
+            path:'malllist',
+            name:'malllist',
+            component:malllist,
+          },
+          {
+            path:'ticketlist',
+            name:'ticketlist',
+            component:ticketlist
+          },
+        ]
+      },
+      
+      
+     
     ]
   },
   {

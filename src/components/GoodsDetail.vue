@@ -30,14 +30,14 @@
               <transition name="bounce">
                 <div
                   class="detail-description-text"
-                  :style="isshow? 'transition: height 0.4s ease 0s;':'transition: height 0.4s ease 0s;height: 400px;'"
+                  ref = "detail"
                 >
                   <div class="detail-rich-text" v-html="goodsInfo.detail"></div>
                 </div>
               </transition>
               <div @click="isShow">
                 <div class="detail-description-more">
-                  查看全部
+                  {{isAll}}
                   <transition>
                     <span
                       :class="isshow?'description-pack-up':'description-more-icon'"
@@ -110,7 +110,9 @@
         </div>
       </div>
     </div>
-    <Loading v-else></Loading>
+    <div v-else style="height:100%;width:100%;background:#000">
+      <Loading></Loading>
+    </div>
   </div>
 </template>
 
@@ -140,7 +142,10 @@ export default {
       id: [],
       goodPrice:'',
       screenProducts:[],
-      isAddCut:false
+      isAddCut:false,
+      moreBtn:true,
+      height:0,
+      isAll:'查看全部'
     };
   },
   async mounted() {
@@ -171,9 +176,24 @@ export default {
     }
     this.products = purductResult.products
     // console.log(this.id)
-    await this.$nextTick();
+    // await this.$nextTick();
+    setTimeout(()=>{
+      this.getHeight()
+    },300)
   },
   methods: {
+    //商品详情高度动画
+    async getHeight(){
+      await this.$nextTick(()=>{
+        this.height = this.$refs.detail.offsetHeight
+      })
+      if(this.$refs.detail.offsetHeight<=400){
+        this.moreBtn= false
+      }else{
+        this.$refs.detail.style.height = '400px'
+      }
+    },
+
     //详情是否全显示
     isShow() {
       this.isshow = !this.isshow;
@@ -196,6 +216,15 @@ export default {
     submitTip(){
       if(this.specsIsActive){
         let id = this.$route.params.id;
+        this.$store.dispatch('getPurchase',{
+          payload:{
+            id,
+            goodInfo:this.screenProducts,
+            sum:this.goodsSum,
+            name:this.goodsInfo.title,
+            priceSend:this.goodsInfo.price_send
+          }
+        })
         // console.log(this.$router.currentRoute.meta)
         // this.$route.params.goodInfo =this.screenProducts 
         // this.$route.params.sum =this.goodsSum
@@ -304,7 +333,18 @@ export default {
   components: {
     Banner,
     Loading
-  }
+  },
+   watch:{  
+      "isshow"(){
+        if(this.isshow){
+          this.$refs.detail.style.height = this.height + 'px'
+          this.isAll = "收起"
+        }else{
+          this.$refs.detail.style.height = "400px"
+          this.isAll = "查看全部"
+        }
+      }
+    }
 };
 </script>
 
@@ -313,7 +353,7 @@ export default {
     display flex
     flex-direction column
     padding:0 0 .68376rem 0;
-    // overflow scroll
+    overflow scroll
     .content{
       .banner{
           width 100%
@@ -372,7 +412,7 @@ export default {
                   background: #1b1a1b;
                   padding-top: .13675rem;
                   .detail-description-text{
-                    
+                    transition: height 0.4s ease 0s;
                     overflow: hidden
                     
                     .detail-rich-text{
