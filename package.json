@@ -24,7 +24,7 @@
     "@vue/cli-plugin-vuex": "^4.0.0",
     "@vue/cli-service": "^4.0.0",
     "babel-plugin-import": "^1.12.2",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
     "swiper": "^5.2.0",
